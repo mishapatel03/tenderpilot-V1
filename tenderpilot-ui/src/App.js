@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import './App.css';
+import Login from "./components/authentication/login";
+import BuyerDashboard from "./components/buyer-dashboard";
+import SupplierDashboard from "./components/supplier-dashboard";
+import BuyerTender from "./components/buyer-tender";
+import { Authentication, BuyerContract, BuyerDashboardRoute, BuyerOrders, BuyerTenders, SupplierDashboardRoute } from "./utils/routes";
+import BuyerContracts from "./components/buyer-contracts";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route exact="true" path={Authentication} element={<Login />} />
+          <Route exact="true" path={BuyerDashboardRoute} element={<BuyerDashboard />} >
+            <Route path={BuyerTenders} element={<BuyerTender />} />
+            <Route path={BuyerContract} element={<BuyerContracts />} />
+            <Route path={BuyerOrders} element={<h1>third</h1>} />
+          </Route>
+          <Route exact="true" path={SupplierDashboardRoute} element={<SupplierDashboard />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
