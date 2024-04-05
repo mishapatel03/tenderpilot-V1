@@ -19,7 +19,7 @@ function App() {
             <Route path={BuyerOrders} element={<h1>third</h1>} />
           </Route>
           <Route exact="true" path={SupplierDashboardRoute} element={<SupplierDashboard />} />
-        </Routes>
+        </Routes> 
       </div>
     </Router>
   );
